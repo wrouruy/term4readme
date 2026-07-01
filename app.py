@@ -5,13 +5,15 @@ import effects
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
-def home():
-    return ({ "hello": "world!!" }, 200, { 'Content-Type': 'application/json' })
 
 @app.route('/svg/custom', methods=['GET'])
 def custom():
     body = effects.custom()
-    print(body['content'])
+    return (mk_svg(body), 200, { 'Content-Type': 'image/svg+xml' })
+
+@app.route('/svg/tty-clock', methods=['GET'])
+def tty_clock():
+    body = effects.tty_clock()
     return (mk_svg(body), 200, { 'Content-Type': 'image/svg+xml' })
 
 if __name__ == '__main__':

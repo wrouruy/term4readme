@@ -21,6 +21,8 @@ def mk_svg(body):
                 e,
                 font_family="JetBrainsMono",
                 insert=(body['x'], body['linespace'] * i + body['y']),
-                fill=body['color']))
+                fill=body['color'],
+                style='white-space: pre;',
+                **{'xml:space': 'preserve'}))
     return dwg.tostring()
 
