@@ -4,7 +4,7 @@ import svgwrite
 def mk_svg(body):
     dwg = svgwrite.Drawing(size=(body['w'], body['h']))
 
-    dwg.embed_font(name="JetBrainsMono", filename="font/JetBrainsMono.ttf")
+    dwg.embed_font(name="JetBrainsMono", filename="assets/font/JetBrainsMono.ttf")
 
     dwg.add(
         dwg.rect(

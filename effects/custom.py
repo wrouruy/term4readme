@@ -10,7 +10,7 @@ def custom():
         'y': query('y', default=0, type=int),
         
         'content': query('content', default=''),
-        'linespace': query('linespace', default=10, type=int),
+        'linespace': query('linespace', default=20, type=int),
 
         'color': query('color', default='black'),
         'bgcolor': query('bgcolor', default='white'),

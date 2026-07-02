@@ -16,5 +16,10 @@ def tty_clock():
     body = effects.tty_clock()
     return (mk_svg(body), 200, { 'Content-Type': 'image/svg+xml' })
 
+@app.route('/svg/pfetch', methods=['GET'])
+def pfetch():
+    body = effects.pfetch()
+    return (mk_svg(body), 200, { 'Content-Type': 'image/svg+xml' })
+
 if __name__ == '__main__':
     app.run(port=5050)
