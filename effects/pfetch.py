@@ -1,4 +1,5 @@
 from flask import request
+from itertools import zip_longest
 import json
 
 def pfetch():
@@ -21,13 +22,14 @@ def pfetch():
     with open("assets/pfetch.json") as f:
         logos = json.load(f)
 
+    print(osname)
     content = f'{prompt}\n' if prompt else ''
-    if not osname in logos:
+    if osname not in logos:
         content += 'invalid os name'
     else:
-        logo = logos["arch"]
-        for i in range(0, max(len(logo), len(fetched))):
-            content += f'{logo[i] or ''}   {fetched[i] or ''}\n' 
+        logo = logos[osname]
+        for logo_line, fetched_line in zip_longest(logo, fetched, fillvalue=''):
+            content += f'{logo_line or len(logo[0]) * ' '}   {fetched_line}\n'
     
 
     return {
